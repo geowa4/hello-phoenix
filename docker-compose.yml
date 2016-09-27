@@ -1,0 +1,12 @@
+version: '2'
+services:
+  database:
+    image: postgres
+    ports:
+      - 5432:5432
+  prometheus:
+    build: ./docker/prometheus
+    ports:
+      - 9090:9090
+    extra_hosts:
+      - "app.host:${PRIVATE_IP}"
